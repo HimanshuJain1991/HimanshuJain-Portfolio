@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const animateCounter = (element) => {
         const target = element.textContent;
         const isPlus = target.includes('+');
-        const number = parseInt(target);
+        const number = parseFloat(target); // Changed to parseFloat for decimals
         
         if (isNaN(number)) return;
         
@@ -197,10 +197,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const timer = setInterval(() => {
             current += increment;
             if (current >= number) {
-                element.textContent = number + (isPlus ? '+' : '');
+                // Show decimal if it has one, otherwise show integer
+                element.textContent = (number % 1 === 0 ? number : number.toFixed(1)) + (isPlus ? '+' : '');
                 clearInterval(timer);
             } else {
-                element.textContent = Math.floor(current) + (isPlus ? '+' : '');
+                // Show decimal during animation if target has decimal
+                element.textContent = (number % 1 === 0 ? Math.floor(current) : current.toFixed(1)) + (isPlus ? '+' : '');
             }
         }, stepTime);
     };

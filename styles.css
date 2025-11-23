@@ -257,7 +257,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 120px 20px 80px;
+    padding: 100px 20px 60px; /* Reduced from 120px/80px */
 }
 
 .bento-container {
@@ -549,7 +549,7 @@ body {
    ============================================ */
 
 section {
-    padding: 80px 20px;
+    padding: 50px 20px; /* Reduced from 80px for tighter spacing */
 }
 
 .section-header {
@@ -573,11 +573,11 @@ section {
    ============================================ */
 
 .about-bento {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns - all in one row */
+    gap: 1.5rem;
 }
 
 .about-card {
@@ -964,10 +964,14 @@ section {
     color: var(--text-muted);
     text-decoration: none;
     transition: color 0.3s ease;
+    cursor: pointer; /* Ensure cursor shows it's clickable */
+    position: relative;
+    z-index: 10; /* Ensure links are above other elements */
 }
 
 .contact-card a:hover {
     color: var(--primary);
+    text-decoration: underline; /* Show underline on hover */
 }
 
 .cta-card {
@@ -1158,6 +1162,11 @@ section {
     
     .hero-buttons {
         flex-direction: column;
+    }
+    
+    /* Make About section responsive - 1 column on mobile */
+    .about-bento {
+        grid-template-columns: 1fr;
     }
     
     .btn-glass {
